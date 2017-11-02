@@ -75,7 +75,7 @@ public class Main extends Application {
 
     }
 
-    public static void doSomething(){
+    public static void doSomething(){ //do something here
 
     }
 
