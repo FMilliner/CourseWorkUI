@@ -1,10 +1,15 @@
 package Models;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class QuestionsService {
 
-    public static void selectAll(List<Thing> targetList, DatabaseConnection database) {
+    public static void selectAll(List<Questions> targetList, DatabaseConnection database) {
 
-        PreparedStatement statement = database.newStatement("SELECT x, y, z FROM Table ORDER BY x");
+        PreparedStatement statement = database.newStatement("SELECT QuestionID, QuizID, Question, Answer FROM Questions ORDER BY QuestionID");
 
         try {
             if (statement != null) {
@@ -13,7 +18,7 @@ public class QuestionsService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Thing(results.getInt("x"), results.getString("y"), results.getString("z")));
+                        targetList.add(new Questions(results.getInt("QuestionID"), results.getInt("QuizID"), results.getString("Question"), results.getString("Answer")));
                     }
                 }
             }

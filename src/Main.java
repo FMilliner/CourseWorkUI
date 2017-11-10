@@ -1,3 +1,6 @@
+import Models.DatabaseConnection;
+import Models.Questions;
+import Models.QuestionsService;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -11,10 +14,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 
 public class Main extends Application {
+    public static DatabaseConnection database;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -71,8 +76,6 @@ public class Main extends Application {
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
 
-        topicButton.setOnAction((ActionEvent ae) -> newStageTopic(root));
-
     }
 
     public static void doSomething(){ //do something here
@@ -81,6 +84,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+    database = new DatabaseConnection("courseworkDatabase.db");
+    ArrayList<Questions> testList = new ArrayList<>();
+    QuestionsService.selectAll(testList, database);
+    for(Questions c: testList){
+        System.out.println(c);
     }
 
 
@@ -98,9 +107,4 @@ public class Main extends Application {
         }
 
     }
-
-    public static void openNewStage(Pane parent) {
-        StageTwo newStage = new StageTwo(parent);
-    }
-
 }
