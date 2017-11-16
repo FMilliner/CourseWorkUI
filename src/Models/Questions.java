@@ -45,4 +45,13 @@ public class Questions {
         this.question = question;
         this.answer = answer;
     }
+
+    public String toString() {
+        return "Questions{" +
+                "quizID=" + quizID +
+                ", questionID=" + questionID +
+                ", question='" + question + '\'' +
+                ", answer='" + answer + '\'' +
+                '}';
+    }
 }
