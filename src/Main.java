@@ -2,7 +2,6 @@ import Models.DatabaseConnection;
 import Models.Questions;
 import Models.QuestionsService;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -33,6 +31,7 @@ public class Main extends Application {
         stage.setOnCloseRequest((WindowEvent we) -> exitPrompt(we));
         stage.show();
 
+        /*
         VBox leftPane = new VBox(20);
         Button leftButton1 = new Button("I am left.");
         leftPane.getChildren().add(leftButton1);
@@ -40,7 +39,7 @@ public class Main extends Application {
         leftPane.getChildren().add(leftButton2);
         root.setLeft(leftPane);
         leftPane.setAlignment(Pos.CENTER);
-        BorderPane.setAlignment(leftPane, Pos.CENTER_LEFT);
+        BorderPane.setAlignment(leftPane, Pos.CENTER_LEFT);         // Code for the left and right VBoxes
 
         VBox rightPane = new VBox(20);
         Button rightButton1 = new Button("I am right.");
@@ -50,13 +49,14 @@ public class Main extends Application {
         root.setRight(rightPane);
         rightPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(rightPane, Pos.CENTER_RIGHT);
+        */
 
         HBox topPane = new HBox(20);
-        Button topicButton = new Button("TOPIC");
+        Button topicButton = new Button("LOGIN");
         topPane.getChildren().add(topicButton);
-        Button topButton2 = new Button("I am top again.");
+        Button topButton2 = new Button("REGISTER");
         topPane.getChildren().add(topButton2);
-        Button searchButton = new Button("SEARCH");
+        Button searchButton = new Button("X");
         topPane.getChildren().add(searchButton);
         root.setTop(topPane);
         topPane.setAlignment(Pos.CENTER);
@@ -76,6 +76,8 @@ public class Main extends Application {
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
 
+        stage.show();
+
     }
 
     public static void doSomething(){ //do something here
@@ -83,13 +85,16 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
+        database = new DatabaseConnection("courseworkDatabase.db");
+        ArrayList<Questions> testList = new ArrayList<>();
+        QuestionsService.selectAll(testList, database);
+        for (Questions c : testList) {
+            System.out.println(c);
+        }
+
         launch(args);
-    }
-    database = new DatabaseConnection("courseworkDatabase.db");
-    ArrayList<Questions> testList = new ArrayList<>();
-    QuestionsService.selectAll(testList, database);
-    for(Questions c: testList){
-        System.out.println(c);
+
     }
 
 
