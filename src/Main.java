@@ -2,6 +2,7 @@ import Models.DatabaseConnection;
 import Models.Questions;
 import Models.QuestionsService;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -25,6 +26,7 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
 
         Scene scene = new Scene(root, 1024, 768);
+        scene.getStylesheets().add("style.css");
 
         stage.setTitle("Hello World");
         stage.setScene(scene);
@@ -52,12 +54,17 @@ public class Main extends Application {
         */
 
         HBox topPane = new HBox(20);
+        topPane.setPadding(new Insets(15, 12, 15, 12));
+        topPane.setSpacing(10);
         Button topicButton = new Button("LOGIN");
+        topicButton.getStyleClass().add("buttonOfWonder");
         topPane.getChildren().add(topicButton);
-        Button topButton2 = new Button("REGISTER");
-        topPane.getChildren().add(topButton2);
-        Button searchButton = new Button("X");
-        topPane.getChildren().add(searchButton);
+        Button regButton = new Button("REGISTER");
+        regButton.getStyleClass().add("buttonOfWonder");
+        topPane.getChildren().add(regButton);
+        Button exitButton = new Button("X");
+        exitButton.getStyleClass().add("buttonOfExit");
+        topPane.getChildren().add(exitButton);
         root.setTop(topPane);
         topPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
