@@ -1,0 +1,36 @@
+.hbox {
+    -fx-background-color: #2f4f4f;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+
+.buttonOfWonder {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: #f48f42;
+    -fx-font-size: 36;
+    -fx-font-family: Gotcha Gothic;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.buttonOfExit {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: black;
+    -fx-font-size: 36;
+    -fx-font-family: Gotcha Gothic;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.wonderLabel {
+    -fx-font-size: 24;
+    -fx-font-family: Gentury Gothic;
+    -fx-font-weight: normal;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: black;
+}

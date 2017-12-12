@@ -5,9 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -75,11 +73,14 @@ public class Main extends Application {
         BorderPane.setAlignment(bottomPane, Pos.BOTTOM_CENTER);
 
         VBox centerPane = new VBox(20);
-        Button centerButton1 = new Button("I am centre.");
-        centerPane.getChildren().add(centerButton1);
-        Button centerButton2 = new Button("I am centre again.");
-        centerPane.getChildren().add(centerButton2);
+        Label usernameLabel = new Label("USERNAME");
+        usernameLabel.getStyleClass().add("wonderLabel");
+        usernameLabel.setPadding(new Insets(10));
+        TextField usernameField = new TextField ();
+        usernameField.setMaxWidth(100);
         root.setCenter(centerPane);
+        centerPane.getChildren().addAll(usernameLabel, usernameField);
+        centerPane.setSpacing(10);
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
 
