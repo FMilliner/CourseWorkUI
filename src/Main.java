@@ -2,12 +2,14 @@ import Models.DatabaseConnection;
 import Models.Questions;
 import Models.QuestionsService;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -77,7 +79,14 @@ public class Main extends Application {
         usernameLabel.getStyleClass().add("wonderLabel");
         usernameLabel.setPadding(new Insets(10));
         TextField usernameField = new TextField ();
-        usernameField.setMaxWidth(100);
+        usernameField.setMaxWidth(160);
+
+        Button loginEnter = new Button("CONFIRM")
+        loginEnter.getStyleClass().add("buttonOfWonder");                           // Creating the button that is used to confirm login and move to stage 2
+        centerPane.getChildren().add(loginEnter);
+
+        loginEnter.setOnAction((ActionEvent ae) -> openNewStage(root));             // Enacting the action event that opens stage 2, connecting it to this button
+
         root.setCenter(centerPane);
         centerPane.getChildren().addAll(usernameLabel, usernameField);
         centerPane.setSpacing(10);
@@ -85,6 +94,42 @@ public class Main extends Application {
         BorderPane.setAlignment(centerPane, Pos.CENTER);
 
         stage.show();
+
+    }
+
+    public static void openNewStage(Pane parent) {
+        StageTwo topicScreen = new StageTwo(parent);
+    }
+    public class StageTwo {
+
+        static Pane parent;
+
+        public StageTwo(Pane theParent) {
+
+            Stage stage = new Stage();
+            parent = theParent;
+            parent.setDisable(true);
+            start(stage);
+
+        }
+
+        public void start(Stage stage) {
+
+            Pane root = new Pane();
+            Scene scene = new Scene(root, 1024, 768);
+            stage.setTitle("This is another scene.");
+            stage.setScene(scene);
+            stage.setOnCloseRequest((WindowEvent we) -> closeStage(stage));
+            stage.show();
+
+        }
+
+        public void closeStage(Stage stage) {
+
+            parent.setDisable(false);
+            stage.close();
+
+        }
 
     }
 
