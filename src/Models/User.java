@@ -2,6 +2,8 @@ package Models;
 
 public class User {
     private int userID;
+    private String UserName;
+    private int score;
 
     public int getUserID() {
         return userID;
@@ -27,23 +29,11 @@ public class User {
         this.score = score;
     }
 
-    public int getTotalScore() {
-        return totalScore;
-    }
 
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
-    }
-
-    private String UserName;
-
-    public User(int userID, String userName, int score, int totalScore) {
+    public User(int userID, String userName, int score) {
         this.userID = userID;
         UserName = userName;
         this.score = score;
-        this.totalScore = totalScore;
     }
 
-    private int score;
-    private int totalScore;
 }

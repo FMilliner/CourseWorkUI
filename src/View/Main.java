@@ -1,3 +1,6 @@
+package View;
+
+import Controller.Controller;
 import Models.DatabaseConnection;
 import Models.Questions;
 import Models.QuestionsService;
@@ -6,52 +9,33 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
 import java.util.ArrayList;
-import java.util.Optional;
 
 
 public class Main extends Application {
     public static DatabaseConnection database;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage loginStage) throws Exception {
 
         BorderPane root = new BorderPane();
 
         Scene scene = new Scene(root, 1024, 768);
         scene.getStylesheets().add("style.css");
 
-        stage.setTitle("Hello World");
-        stage.setScene(scene);
-        stage.setOnCloseRequest((WindowEvent we) -> exitPrompt(we));
-        stage.show();
-
-        /*
-        VBox leftPane = new VBox(20);
-        Button leftButton1 = new Button("I am left.");
-        leftPane.getChildren().add(leftButton1);
-        Button leftButton2 = new Button("I am left again.");
-        leftPane.getChildren().add(leftButton2);
-        root.setLeft(leftPane);
-        leftPane.setAlignment(Pos.CENTER);
-        BorderPane.setAlignment(leftPane, Pos.CENTER_LEFT);         // Code for the left and right VBoxes
-
-        VBox rightPane = new VBox(20);
-        Button rightButton1 = new Button("I am right.");
-        rightPane.getChildren().add(rightButton1);
-        Button rightButton2 = new Button("I am right again.");
-        rightPane.getChildren().add(rightButton2);
-        root.setRight(rightPane);
-        rightPane.setAlignment(Pos.CENTER);
-        BorderPane.setAlignment(rightPane, Pos.CENTER_RIGHT);
-        */
+        loginStage.setTitle("Hello World");
+        loginStage.setScene(scene);
+        loginStage.setOnCloseRequest((WindowEvent we) -> Controller.exitPrompt(we));
+        loginStage.show();
 
         HBox topPane = new HBox(20);
         topPane.setPadding(new Insets(15, 12, 15, 12));
@@ -81,11 +65,11 @@ public class Main extends Application {
         TextField usernameField = new TextField ();
         usernameField.setMaxWidth(160);
 
-        Button loginEnter = new Button("CONFIRM")
+        Button loginEnter = new Button("CONFIRM");
         loginEnter.getStyleClass().add("buttonOfWonder");                           // Creating the button that is used to confirm login and move to stage 2
         centerPane.getChildren().add(loginEnter);
 
-        loginEnter.setOnAction((ActionEvent ae) -> openNewStage(root));             // Enacting the action event that opens stage 2, connecting it to this button
+        loginEnter.setOnAction((ActionEvent ae) -> Controller.openNewStage(root));             // Enacting the action event that opens stage 2, connecting it to this button
 
         root.setCenter(centerPane);
         centerPane.getChildren().addAll(usernameLabel, usernameField);
@@ -93,49 +77,10 @@ public class Main extends Application {
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
 
-        stage.show();
+        loginStage.show();
 
     }
 
-    public static void openNewStage(Pane parent) {
-        StageTwo topicScreen = new StageTwo(parent);
-    }
-    public class StageTwo {
-
-        static Pane parent;
-
-        public StageTwo(Pane theParent) {
-
-            Stage stage = new Stage();
-            parent = theParent;
-            parent.setDisable(true);
-            start(stage);
-
-        }
-
-        public void start(Stage stage) {
-
-            Pane root = new Pane();
-            Scene scene = new Scene(root, 1024, 768);
-            stage.setTitle("This is another scene.");
-            stage.setScene(scene);
-            stage.setOnCloseRequest((WindowEvent we) -> closeStage(stage));
-            stage.show();
-
-        }
-
-        public void closeStage(Stage stage) {
-
-            parent.setDisable(false);
-            stage.close();
-
-        }
-
-    }
-
-    public static void doSomething(){ //do something here
-
-    }
 
     public static void main(String[] args) {
 
@@ -150,19 +95,4 @@ public class Main extends Application {
 
     }
 
-
-    public static void exitPrompt(WindowEvent we) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Are you sure you want to exit?");
-
-        Optional result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            System.exit(0);
-        } else {
-            we.consume();
-        }
-
-    }
 }
