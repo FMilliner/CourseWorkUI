@@ -21,4 +21,16 @@ public class UserService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
+    public static void save(User itemToSave, DatabaseConnection database) {
+
+        try {
+                PreparedStatement statement = database.newStatement("INSERT INTO User (UserName, Score) VALUES (?, ?)");
+                statement.setString(1, itemToSave.getUserName());
+                statement.setInt(2, itemToSave.getScore());
+                database.executeUpdate(statement);
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
+    }
+
 }

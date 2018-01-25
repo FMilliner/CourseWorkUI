@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -59,20 +60,26 @@ public class Main extends Application {
         BorderPane.setAlignment(bottomPane, Pos.BOTTOM_CENTER);
 
         VBox centerPane = new VBox(20);
-        Label usernameLabel = new Label("USERNAME");
-        usernameLabel.getStyleClass().add("wonderLabel");
-        usernameLabel.setPadding(new Insets(10));
-        TextField usernameField = new TextField ();
-        usernameField.setMaxWidth(160);
 
-        Button loginEnter = new Button("CONFIRM");
-        loginEnter.getStyleClass().add("buttonOfWonder");                           // Creating the button that is used to confirm login and move to stage 2
-        centerPane.getChildren().add(loginEnter);
+        //Defining the Name text field
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Enter your username");
+        usernameField.setMinWidth(20);
+        usernameField.setMaxWidth(300);
+        centerPane.getChildren().add(usernameField);
 
-        loginEnter.setOnAction((ActionEvent ae) -> Controller.openNewStage(root));             // Enacting the action event that opens stage 2, connecting it to this button
+        //Defining the Submit button
+        Button submit = new Button("SUBMIT");
+        submit.getStyleClass().add("buttonOfWonder");
+
+        submit.setOnAction(ae -> Controller.createNewUser(usernameField.getText(), root));          // on click open new scene
+
+        centerPane.getChildren().add(submit);
+
+        centerPane.setPadding(new Insets(10, 10, 10, 10));      // Setting padding for centerPane where username textfield is
 
         root.setCenter(centerPane);
-        centerPane.getChildren().addAll(usernameLabel, usernameField);
+        //centerPane.getChildren().addAll(usernameLabel, usernameField);
         centerPane.setSpacing(10);
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
