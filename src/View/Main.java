@@ -61,6 +61,11 @@ public class Main extends Application {
 
         VBox centerPane = new VBox(20);
 
+        //Defining label which visually represents validation
+        Label errorLabel=new Label("Valid");
+        errorLabel.getStyleClass().add("wonderLabel");
+        centerPane.getChildren().add(errorLabel);
+
         //Defining the Name text field
         TextField usernameField = new TextField();
         usernameField.setPromptText("Enter your username");
@@ -71,10 +76,10 @@ public class Main extends Application {
         //Defining the Submit button
         Button submit = new Button("SUBMIT");
         submit.getStyleClass().add("buttonOfWonder");
-
-        submit.setOnAction(ae -> Controller.createNewUser(usernameField.getText(), root));          // on click open new scene
-
         centerPane.getChildren().add(submit);
+
+        //submit.setOnAction(ae -> Controller.usernameCheck(usernameField.getText(), errorLabel));              // passes username text to username check method in controller
+        submit.setOnAction(ae -> Controller.createNewUser(usernameField.getText(), root, errorLabel));          // on click open new scene
 
         centerPane.setPadding(new Insets(10, 10, 10, 10));      // Setting padding for centerPane where username textfield is
 

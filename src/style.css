@@ -3,6 +3,11 @@
     -fx-padding: 15;
     -fx-spacing: 10;
 }
+.vbox {
+    -fx-background-color: #2f4f4f;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
 
 .buttonOfWonder {
     -fx-border-color: transparent;
@@ -25,12 +30,24 @@
     -fx-text-fill: white;
 }
 .wonderLabel {
-    -fx-font-size: 28;
+    -fx-font-size: 24;
     -fx-font-family: Gotcha Gothic;
-    -fx-font-weight: normal;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: black;
+    -fx-padding: 3 15 3 15;
+}
+.invalidLabel {
+    -fx-font-size: 24;
+    -fx-font-family: Gotcha Gothic;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: black;
+    -fx-padding: 3 15 3 15;
 }
