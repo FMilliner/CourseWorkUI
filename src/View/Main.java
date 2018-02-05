@@ -47,9 +47,11 @@ public class Main extends Application {
         Button regButton = new Button("REGISTER");
         regButton.getStyleClass().add("buttonOfWonder");
         topPane.getChildren().add(regButton);
+        /*
         Button exitButton = new Button("X");
         exitButton.getStyleClass().add("buttonOfExit"); //test
         topPane.getChildren().add(exitButton);
+        */
         root.setTop(topPane);
         topPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);

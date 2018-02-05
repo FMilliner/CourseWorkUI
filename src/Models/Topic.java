@@ -20,8 +20,16 @@ public class Topic {
     private int topicID;
     private String topicName;
 
-    public Topic(int topicID, String topicNAme) {
+    public Topic(int topicID, String topicName) {
+
+        //System.out.println("CREATE " + topicName);
+
         this.topicID = topicID;
         this.topicName = topicName;
+    }
+
+    @Override
+    public String toString() {
+        return topicName;
     }
 }

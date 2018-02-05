@@ -51,3 +51,13 @@
     -fx-background-color: black;
     -fx-padding: 3 15 3 15;
 }
+.selectedButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: #a55538;
+    -fx-font-size: 36;
+    -fx-font-family: Gotcha Gothic;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
