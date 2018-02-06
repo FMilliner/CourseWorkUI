@@ -79,15 +79,20 @@ public class StageTwo {
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 Button exampleButton = new Button(topics.get(t).toString());
-                exampleButton.setPrefSize(100, 100);
-                exampleButton.getStyleClass().add("thing");
+                exampleButton.setPrefSize(400, 400);
+                exampleButton.getStyleClass().add("topicButtons");
                 gridPane1.add(exampleButton, x, y);
+
+                exampleButton.setOnAction(ae -> topicStage.setScene(StageThree.openSceneThree()));
+
                 t++;
                 if (t > topics.size()) break;
             }
             if (t > topics.size()) break;
         }
         topicPane.setCenter(gridPane1);
+
+
 
         topicStage.setOnCloseRequest((WindowEvent we) -> StageTwoController.closeStage(topicStage));
         topicStage.show();
