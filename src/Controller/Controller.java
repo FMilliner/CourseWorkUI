@@ -38,10 +38,11 @@ public class Controller {
     private static boolean isValidName(String username) {
         if (username.contains(" ")) return false;
         if (username.length() < 4) return false;
+        if (username.length() > 12) return false;
 
         return true;
     }
-    /*
+
     public static void usernameCheck(String username, Label errorLabel) {
          if(isValidName(username) ){
             errorLabel.setStyle("-fx-text-fill:green");
@@ -50,7 +51,7 @@ public class Controller {
             errorLabel.setText("Invalid User Name");
             errorLabel.setStyle("-fx-text-fill:red");
         }
-    }*/
+    }
     //Method validates username and enters user to database if valid
     public static void createNewUser(String username, Pane root, Label errorLabel) {        // passing username, pane and label
         if (isValidName(username) ){

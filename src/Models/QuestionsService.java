@@ -26,5 +26,22 @@ public class QuestionsService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
+    // NOTE TO ME LATER: THIS PROBABLY WON'T WORK, YOU'RE NOT AS SMART AS YOU THINK YOU ARE WHEN YOU'RE TIRED
+    /*
+    public static void selectAll(List<Questions> targetList, DatabaseConnection database) {
+        PreparedStatement statement = database.newStatement("SELECT Question FROM Questions ORDER BY QuestionID");
+        try{
+            if (statement !=null) {
 
+                ResultSet results = database.executeQuery(statement);
+
+                if(results != null) {
+                    while (results.next()){
+                        targetList.add(new Questions)
+                    }
+                }
+            }
+        }
+    }
+    */
 }
