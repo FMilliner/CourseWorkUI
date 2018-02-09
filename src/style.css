@@ -83,3 +83,14 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
+.warnLabel {
+    -fx-font-size: 24;
+    -fx-font-family: Gotcha Gothic;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-padding: 3 15 3 15;
+}

@@ -41,17 +41,17 @@ public class Main extends Application {
         HBox topPane = new HBox(20);
         topPane.setPadding(new Insets(15, 12, 15, 12));
         topPane.setSpacing(10);
-        Button topicButton = new Button("LOGIN");
-        topicButton.getStyleClass().add("buttonOfWonder");
-        topPane.getChildren().add(topicButton);
-        Button regButton = new Button("REGISTER");
-        regButton.getStyleClass().add("buttonOfWonder");
-        topPane.getChildren().add(regButton);
+
+        Button loginButton = new Button("LOGIN");
+        loginButton.getStyleClass().add("buttonOfWonder");
+        topPane.getChildren().add(loginButton);
+
         /*
         Button exitButton = new Button("X");
         exitButton.getStyleClass().add("buttonOfExit"); //test
         topPane.getChildren().add(exitButton);
         */
+
         root.setTop(topPane);
         topPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
@@ -79,6 +79,11 @@ public class Main extends Application {
         Button submit = new Button("SUBMIT");
         submit.getStyleClass().add("buttonOfWonder");
         centerPane.getChildren().add(submit);
+
+        Label wLabel = new Label("Minimum 4 characters, Max 5 characters, no whitespace.");
+        wLabel.getStyleClass().add("warnLabel");
+        centerPane.getChildren().add(wLabel);
+
 
         //submit.setOnAction(ae -> Controller.usernameCheck(usernameField.getText(), errorLabel));              // passes username text to username check method in controller
         submit.setOnAction(ae -> Controller.createNewUser(usernameField.getText(), root, errorLabel));          // on click open new scene

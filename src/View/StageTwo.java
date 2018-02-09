@@ -3,18 +3,19 @@ package View;
 import Controller.StageTwoController;
 import Models.Topic;
 import Models.TopicService;
+import Models.User;
+import Models.UserService;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 public class StageTwo {
@@ -55,6 +56,43 @@ public class StageTwo {
         Button searchButton = new Button("SEARCH");
         searchButton.getStyleClass().add("buttonOfWonder");
         topPane.getChildren().add(searchButton);
+
+        searchButton.setOnAction((ae) -> {
+            topicPane.getChildren().clear();
+            VBox temp = new VBox (10);
+            temp.setPadding(new Insets(50));
+            temp.setAlignment(Pos.TOP_CENTER);
+            Scene scene3 = new Scene (temp, 1024, 768);
+
+            topicPane.setTop(temp);
+
+            Button sButton = new Button("Search User");
+            sButton.getStyleClass().add("buttonOfWonder");
+            temp.getChildren().add(sButton);
+
+            TextField sField = new TextField();
+            sField.setPromptText("Enter player username");
+            sField.setMinWidth(20);
+            sField.setMaxWidth(300);
+            temp.getChildren().add(sField);
+
+            sButton.setOnAction((event)-> {
+                ArrayList<User> testList = new ArrayList<>();
+                UserService.selectAll(testList, Main.database);
+                for(User l: testList){
+                    if(l.getUserName().equals(sField.getText())){
+                        Label playerLabel=new Label(l.getUserName());
+                        playerLabel.getStyleClass().add("wonderLabel");
+                        temp.getChildren().add(playerLabel);
+
+                        Label userScore =new Label(""+l.getScore());
+                        userScore.getStyleClass().add("wonderLabel");
+                        temp.getChildren().add(userScore);
+
+                    }
+                }
+            });
+        });
         /*
         Button exitButton = new Button("X");
         exitButton.getStyleClass().add("buttonOfExit"); //test

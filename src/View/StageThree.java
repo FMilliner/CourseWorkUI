@@ -19,24 +19,26 @@ public class StageThree {
         root.setAlignment(Pos.TOP_CENTER);
         Scene scene3 = new Scene (root, 1024, 768);
 
-
-
         ArrayList<Questions> testList = new ArrayList<>();
         QuestionsService.selectAll(testList, Main.database);
 
         int k = 1;                                                      //question number counter
 
         for (Questions c : testList) {
-            scene3.getStylesheets().add("style.css");                   //move this out the for loop if it doesn't work
+            scene3.getStylesheets().add("style.css");
             Button questionButton =new Button("Question"+k);
             questionButton.getStyleClass().add("buttonOfWonder");
             root.getChildren().add(questionButton);
             k++;
 
+            Label questionLabel = new Label(c.getQuestion());
+            root.getChildren().add(questionLabel);
+
+            /*
             for (Questions l: testList){
                 Label questionLabel = new Label(l.getQuestion());
                 root.getChildren().add(questionLabel);
-            }
+            }*/
 
             //root.getChildren().clear();                                 //clear the scene before filling it again with the new question
             System.out.println(c);
@@ -44,4 +46,12 @@ public class StageThree {
 
         return scene3;
     }
+    /*
+    int n = 1;
+    public void sceneClean(VBox root){
+        n = 1;
+        root.getChildren().clear();
+        Label questionLabel = new Label(Questions.getQuestion(n));
+        root.getChildren().add(questionLabel);
+    }*/
 }

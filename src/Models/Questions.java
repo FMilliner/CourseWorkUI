@@ -1,16 +1,9 @@
 package Models;
 
 public class Questions {
-    private int quizID;
     private int questionID;
+    private int quizID;
 
-    public int getQuizID() {
-        return quizID;
-    }
-
-    public void setQuizID(int quizID) {
-        this.quizID = quizID;
-    }
 
     public int getQuestionID() {
         return questionID;
@@ -18,6 +11,14 @@ public class Questions {
 
     public void setQuestionID(int questionID) {
         this.questionID = questionID;
+    }
+
+    public int getQuizID() {
+        return quizID;
+    }
+
+    public void setQuizID(int quizID) {
+        this.quizID = quizID;
     }
 
     public String getQuestion() {
@@ -39,19 +40,19 @@ public class Questions {
     private String question;
     private String answer;
 
-    public Questions(int quizID, int questionID, String question, String answer) {
-        this.quizID = quizID;
+    public Questions(int questionID, int quizID, String question, String answer) {
         this.questionID = questionID;
+        this.quizID = quizID;
         this.question = question;
         this.answer = answer;
     }
 
     public String toString() {
         return "Questions{" +
-                "quizID=" + quizID +
-                ", questionID=" + questionID +
-                ", question='" + question + '\'' +
-                ", answer='" + answer + '\'' +
+                "questionID = " + questionID +
+                ", quizID = " + quizID +
+                ", question = '" + question + '\'' +
+                ", answer = '" + answer + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Models.Questions;
 import Models.User;
 import Models.UserService;
 import View.Main;
@@ -36,6 +37,11 @@ public class Controller {
     }
 
     private static boolean isValidName(String username) {
+        ArrayList<User> testList = new ArrayList<>();
+        UserService.selectAll(testList, Main.database);
+        for(User l: testList){
+            if(l.getUserName().equals(username)) return false;
+        }
         if (username.contains(" ")) return false;
         if (username.length() < 4) return false;
         if (username.length() > 12) return false;
